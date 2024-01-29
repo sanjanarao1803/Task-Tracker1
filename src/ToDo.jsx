@@ -80,6 +80,7 @@ export default function ToDo(){
     
     return(
         <>
+
             <h2>TASK TRACKER</h2>
 
             <br></br>
@@ -106,15 +107,15 @@ export default function ToDo(){
 
             <div>
                 {todos.map((todo) => (
-                    <div key={todo.id} className="card mb-3" draggable>
+                    <div key={todo.id} className="card mb-3" style={{backgroundColor : " rgb(251,234,234)"}} draggable>
                         <div className="card-body">
                             <h5 className="card-title" style={todo.isDone ? {textDecorationLine:"line-through"} : {}}>
                                 {todo.task}
                             </h5>
                             <h6>Status : {todo.isDone ? <span class="text-muted">Completed</span> : <span class="text-muted">Not completed</span>}</h6>
-                            <button className="btn btn-outline-danger btn-sm" onClick={() => deleteTodo(todo.id)}>Delete</button>
+                            <button className="btn btn-danger btn-sm" onClick={() => deleteTodo(todo.id)}>Delete</button>
                             &nbsp;&nbsp;&nbsp;
-                            <button className="btn btn-outline-success btn-sm" onClick={()=>markAsDone(todo.id)}
+                            <button className="btn btn-success btn-sm" onClick={()=>markAsDone(todo.id)}
                             >Done</button>
                             <br></br>
                             <small class="text-muted">Date added : {current_date}</small>
@@ -123,7 +124,7 @@ export default function ToDo(){
                 ))}
             </div>
 
-            <button onClick={markAllDone} className="btn btn-success">All Done</button>
+            <button onClick={markAllDone} className="btn btn-warning">All Done</button>
         </>
     );
 }
