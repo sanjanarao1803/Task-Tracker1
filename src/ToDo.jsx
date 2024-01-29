@@ -104,7 +104,6 @@ export default function ToDo(){
             <h4>Tasks to do</h4>
 
             <br></br>
-
             <div>
                 {todos.map((todo) => (
                     <div key={todo.id} className="card mb-3" style={{backgroundColor : " rgb(251,234,234)"}} draggable>
