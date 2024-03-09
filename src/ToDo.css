@@ -6,3 +6,8 @@ div .card-body{
     padding-bottom: 6px;
 }
 
+/* @media screen and (max-width : 330px){
+    .root{
+        margin-right: 2vw;
+    }
+} */

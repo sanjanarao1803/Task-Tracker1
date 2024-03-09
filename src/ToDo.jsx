@@ -28,16 +28,16 @@ export default function ToDo(){
         setTodos((prevTodos)=> todos.filter((prevTodos=>prevTodos.id != id)));
     };
 
-    let markAllDone = () => {
-        setTodos((todos) => 
-            todos.map((todo) => {
-                return {
-                    ...todo,
-                    isDone:true
-                };
-            })
-        );
-    };
+    // let markAllDone = () => {
+    //     setTodos((todos) => 
+    //         todos.map((todo) => {
+    //             return {
+    //                 ...todo,
+    //                 isDone:true
+    //             };
+    //         })
+    //     );
+    // };
 
 
 
@@ -72,14 +72,14 @@ export default function ToDo(){
         localStorage.setItem('lists',JSON.stringify(todos))
     },[todos]);
 
-    let today=new Date();
-    let date=today.getDate();
-    let month=today.getMonth()+1;
-    let year=today.getFullYear();
-    let current_date = `${date}/${month}/${year}`;
-    
+    // let today=new Date();
+    // let date=today.getDate();
+    // let month=today.getMonth()+1;
+    // let year=today.getFullYear();
+    // let current_date = `${date}/${month}/${year}`;
+    // <small class="text-muted">Date added : {current_date}</small>
     return(
-        <>
+        <div className="root">
 
             <h2>TASK TRACKER</h2>
 
@@ -88,14 +88,15 @@ export default function ToDo(){
             <form onSubmit={handleSubmit}>  
 
                 <input 
-                class="form-control"
+                className="form-control"
                 placeholder="Enter your task" 
                 value = {newTodo}
                 onChange = {updateTodoValue}
+                required
                 ></input>
                 <br></br>
 
-                <button class="btn btn-primary" >Add</button>
+                <button className="btn btn-primary" >Add</button>
             </form>
 
             <br></br>
@@ -111,19 +112,18 @@ export default function ToDo(){
                             <h5 className="card-title" style={todo.isDone ? {textDecorationLine:"line-through"} : {}}>
                                 {todo.task}
                             </h5>
-                            <h6>Status : {todo.isDone ? <span class="text-muted">Completed</span> : <span class="text-muted">Not completed</span>}</h6>
+                            <h6>Status : {todo.isDone ? <span className="text-muted">Completed</span> : <span className="text-muted">Not completed</span>}</h6>
                             <button className="btn btn-danger btn-sm" onClick={() => deleteTodo(todo.id)}>Delete</button>
                             &nbsp;&nbsp;&nbsp;
                             <button className="btn btn-success btn-sm" onClick={()=>markAsDone(todo.id)}
                             >Done</button>
                             <br></br>
-                            <small class="text-muted">Date added : {current_date}</small>
                         </div>
                     </div>
                 ))}
             </div>
-
-            <button onClick={markAllDone} className="btn btn-warning">All Done</button>
-        </>
+            {/* {todos.size ? <button onClick={markAllDone} className="btn btn-warning">All Done</button> : {}}; */}
+            {/* <button onClick={markAllDone} className="btn btn-warning">All Done</button> */}
+        </div>
     );
 }
