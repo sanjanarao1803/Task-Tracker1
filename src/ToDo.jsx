@@ -57,6 +57,22 @@ export default function ToDo(){
         );
     };
 
+    let markAsUnDo = (id) => {
+        setTodos((todos) => 
+            todos.map((todo) => {
+                if(todo.id==id){
+                    return {
+                        ...todo,
+                        isDone:false
+                    };
+                }
+                else{
+                    return todo;
+                }
+            })
+        );
+    };
+
     let handleSubmit = (e) => {
         e.preventDefault();
 
@@ -115,8 +131,9 @@ export default function ToDo(){
                             <h6>Status : {todo.isDone ? <span className="text-muted">Completed</span> : <span className="text-muted">Not completed</span>}</h6>
                             <button className="btn btn-danger btn-sm" onClick={() => deleteTodo(todo.id)}>Delete</button>
                             &nbsp;&nbsp;&nbsp;
-                            <button className="btn btn-success btn-sm" onClick={()=>markAsDone(todo.id)}
-                            >Done</button>
+                            {!todo.isDone ? <button className="btn btn-success btn-sm" onClick={()=>markAsDone(todo.id)}>Done</button> : <button className="btn btn-success btn-sm" onClick={()=>markAsUnDo(todo.id)}>UnDo</button>}
+                            
+                            
                             <br></br>
                         </div>
                     </div>
